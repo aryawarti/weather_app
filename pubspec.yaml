@@ -49,7 +49,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "images/weather-ios-logo-svg-vector.svg"
+  image_path: "assets/icons/favpng_cloud-sunlight-clip-art.png"
 
 
 

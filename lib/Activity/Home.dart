@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  TextEditingController searchController=new TextEditingController();
+  TextEditingController searchController = new TextEditingController();
   @override
   void initState() {
     // TODO: implement initState
@@ -35,44 +35,29 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    var city_name = [
-      "Varanasi",
-      "Mumbai",
-      "Chennai",
-      "Kanpur",
-      "Luknow",
-      "Delhi",
-      "Kurukshetra"
-    ];
-    final _random = new Random();
-    var city = city_name[_random.nextInt(city_name.length)];
-
     Map? info = ModalRoute.of(context)?.settings.arguments as Map?;
 
     dynamic tempuValue = info?["tempu_value"];
     String temp = (tempuValue).toString();
     dynamic airValue = info?["air_speed_value"];
     String air = (airValue).toString();
-      if(temp=="NA"){
-        print("NA");
-      }
-      else{
-        dynamic tempuValue = info?["tempu_value"];
-        String temp = (tempuValue).toString().substring(0,4);
-        dynamic airValue = info?["air_speed_value"];
-        String air = (airValue).toString().substring(0,4);
-      }
+    if (temp == "NA") {
+      print("NA");
+    } else {
+      dynamic tempuValue = info?["tempu_value"];
+      String temp = (tempuValue).toString().substring(0, 4);
+      dynamic airValue = info?["air_speed_value"];
+      String air = (airValue).toString().substring(0, 4);
+    }
     dynamic iconValue = info?["icon_value"];
-    String icon=iconValue;
+    String icon = iconValue;
     dynamic cityValue = info?["city_value"];
-    String getCity=cityValue;
+    String getCity = cityValue;
     dynamic humValue = info?["hum_value"];
-    String hum=humValue;
+    String hum = humValue;
 
     dynamic desValue = info?["des_value"];
-    String des=desValue;
-
-
+    String des = desValue;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -107,15 +92,15 @@ class _HomeState extends State<Home> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                           if((searchController.text).replaceAll(" ", "")==""){
-                              print("Blank search");
-                           }
-                           else{
-                             Navigator.pushReplacementNamed(context, "/loading",arguments: {
-                               "searchText":searchController.text,
-                             });
-                           }
-
+                          if ((searchController.text).replaceAll(" ", "") ==
+                              "") {
+                            print("Blank search");
+                          } else {
+                            Navigator.pushReplacementNamed(context, "/loading",
+                                arguments: {
+                                  "searchText": searchController.text,
+                                });
+                          }
                         },
                         child: Container(
                           child: Icon(Icons.search, color: Colors.blue),
@@ -124,11 +109,11 @@ class _HomeState extends State<Home> {
                       ),
                       Expanded(
                         child: TextField(
-                          controller: searchController,
+                            controller: searchController,
                             decoration: InputDecoration(
-                          hintText: "Search $city",
-                          border: InputBorder.none,
-                        )),
+                              hintText: "Search City",
+                              border: InputBorder.none,
+                            )),
                       ),
                     ],
                   ),
@@ -145,9 +130,11 @@ class _HomeState extends State<Home> {
                         margin: EdgeInsets.symmetric(horizontal: 25),
                         child: Row(
                           children: [
-                              Image.network(
-                                  "https://openweathermap.org/img/wn/$icon@2x.png"),
-                            SizedBox(width: 20,),
+                            Image.network(
+                                "https://openweathermap.org/img/wn/$icon@2x.png"),
+                            SizedBox(
+                              width: 20,
+                            ),
                             Column(
                               children: [
                                 Text(
@@ -180,8 +167,8 @@ class _HomeState extends State<Home> {
                             color: Colors.white.withOpacity(0.5),
                           ),
                           padding: EdgeInsets.all(26),
-                          margin:
-                              EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 25, vertical: 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -193,7 +180,7 @@ class _HomeState extends State<Home> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                   " $temp",
+                                    " $temp",
                                     style: TextStyle(
                                       fontSize: 85,
                                     ),
@@ -288,7 +275,9 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
-                SizedBox(height: 85,),
+                SizedBox(
+                  height: 85,
+                ),
                 Container(
                   padding: EdgeInsets.all(30),
                   child: Column(

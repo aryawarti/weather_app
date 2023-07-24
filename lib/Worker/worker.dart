@@ -32,7 +32,7 @@ class Worker{
       String getMainDes=weatherMainData['main'];
       String getDesc=weatherMainData['description'];
 
-      
+
       // Assigning values
       temp=getTemp.toString().substring(0,4);
       humidity=getHumidity.toString();
@@ -52,5 +52,4 @@ class Worker{
     }
 
    }
-
 }
